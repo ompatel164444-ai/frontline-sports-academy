@@ -1139,7 +1139,7 @@ function Footer() {
             rel="noopener noreferrer"
             className="text-white/30 hover:text-white/50 text-xs transition-colors"
           >
-            Built with ❤️ using caffeine.ai
+            Built with ❤️ using Om and Tech
           </a>
         </div>
       </div>
