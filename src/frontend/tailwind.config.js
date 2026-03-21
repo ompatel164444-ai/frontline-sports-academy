@@ -16,7 +16,8 @@ export default {
     },
     extend: {
       fontFamily: {
-        sans: ['Inter', 'system-ui', 'sans-serif'],
+        display: ['Bricolage Grotesque', 'system-ui', 'sans-serif'],
+        sans: ['Plus Jakarta Sans', 'Inter', 'system-ui', 'sans-serif'],
       },
       colors: {
         border: "oklch(var(--border))",
@@ -24,15 +25,20 @@ export default {
         ring: "oklch(var(--ring) / <alpha-value>)",
         background: "oklch(var(--background))",
         foreground: "oklch(var(--foreground))",
-        navy: {
-          DEFAULT: "oklch(0.22 0.06 240)",
-          light: "oklch(0.28 0.065 240)",
-          dark: "oklch(0.16 0.055 240)",
+        obsidian: {
+          DEFAULT: "oklch(0.08 0.008 240)",
+          light: "oklch(0.12 0.01 240)",
+          lighter: "oklch(0.16 0.012 240)",
         },
         gold: {
-          DEFAULT: "oklch(0.77 0.16 72)",
-          dark: "oklch(0.68 0.16 72)",
-          foreground: "oklch(0.18 0.055 240)",
+          DEFAULT: "oklch(0.73 0.16 72)",
+          bright: "oklch(0.82 0.18 78)",
+          dark: "oklch(0.62 0.15 68)",
+          muted: "oklch(0.73 0.10 72)",
+        },
+        crimson: {
+          DEFAULT: "oklch(0.50 0.22 27)",
+          bright: "oklch(0.58 0.24 27)",
         },
         primary: {
           DEFAULT: "oklch(var(--primary) / <alpha-value>)",
@@ -86,9 +92,12 @@ export default {
         sm: "calc(var(--radius) - 4px)",
       },
       boxShadow: {
-        xs: "0 1px 2px 0 rgba(0,0,0,0.05)",
-        card: "0 4px 20px rgba(11,30,52,0.1)",
-        "card-hover": "0 8px 30px rgba(11,30,52,0.18)",
+        xs: "0 1px 2px 0 rgba(0,0,0,0.15)",
+        card: "0 4px 24px rgba(0,0,0,0.4), 0 1px 4px rgba(0,0,0,0.3)",
+        "card-hover": "0 12px 48px rgba(0,0,0,0.5), 0 4px 16px rgba(0,0,0,0.3)",
+        "gold-glow": "0 0 20px rgba(212,160,23,0.35), 0 0 60px rgba(212,160,23,0.12)",
+        "gold-glow-lg": "0 0 40px rgba(212,160,23,0.5), 0 0 100px rgba(212,160,23,0.2)",
+        "card-premium": "0 8px 32px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06)",
       },
       keyframes: {
         "accordion-down": {
@@ -99,20 +108,10 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        "fade-up": {
-          from: { opacity: "0", transform: "translateY(24px)" },
-          to: { opacity: "1", transform: "translateY(0)" },
-        },
-        "fade-in": {
-          from: { opacity: "0" },
-          to: { opacity: "1" },
-        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        "fade-up": "fade-up 0.6s ease-out forwards",
-        "fade-in": "fade-in 0.5s ease-out forwards",
       },
     },
   },

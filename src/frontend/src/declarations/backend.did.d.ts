@@ -16,10 +16,45 @@ export interface ContactMessage {
   'message' : string,
   'phone' : string,
 }
+export interface Enrollment {
+  'age' : bigint,
+  'playstyle' : string,
+  'medicalProblem' : boolean,
+  'name' : string,
+  'email' : string,
+  'planDuration' : string,
+  'address' : string,
+  'phone' : string,
+  'batchTimeSlot' : string,
+  'location' : string,
+}
+export type UserRole = { 'admin' : null } |
+  { 'user' : null } |
+  { 'guest' : null };
 export interface _SERVICE {
+  '_initializeAccessControlWithSecret' : ActorMethod<[string], undefined>,
+  'assignCallerUserRole' : ActorMethod<[Principal, UserRole], undefined>,
+  'getCallerUserRole' : ActorMethod<[], UserRole>,
   'getContactMessage' : ActorMethod<[bigint], ContactMessage>,
   'getContactMessages' : ActorMethod<[], Array<ContactMessage>>,
+  'getEnrollments' : ActorMethod<[], Array<Enrollment>>,
+  'isCallerAdmin' : ActorMethod<[], boolean>,
   'submitContactMessage' : ActorMethod<[string, string, string], undefined>,
+  'submitEnrollment' : ActorMethod<
+    [
+      string,
+      string,
+      bigint,
+      string,
+      string,
+      string,
+      string,
+      string,
+      string,
+      boolean,
+    ],
+    undefined
+  >,
 }
 export declare const idlService: IDL.ServiceClass;
 export declare const idlInitArgs: IDL.Type[];

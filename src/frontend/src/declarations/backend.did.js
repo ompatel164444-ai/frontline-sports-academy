@@ -8,33 +8,109 @@
 
 import { IDL } from '@icp-sdk/core/candid';
 
+export const UserRole = IDL.Variant({
+  'admin' : IDL.Null,
+  'user' : IDL.Null,
+  'guest' : IDL.Null,
+});
 export const ContactMessage = IDL.Record({
   'id' : IDL.Nat,
   'name' : IDL.Text,
   'message' : IDL.Text,
   'phone' : IDL.Text,
 });
+export const Enrollment = IDL.Record({
+  'age' : IDL.Nat,
+  'playstyle' : IDL.Text,
+  'medicalProblem' : IDL.Bool,
+  'name' : IDL.Text,
+  'email' : IDL.Text,
+  'planDuration' : IDL.Text,
+  'address' : IDL.Text,
+  'phone' : IDL.Text,
+  'batchTimeSlot' : IDL.Text,
+  'location' : IDL.Text,
+});
 
 export const idlService = IDL.Service({
+  '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+  'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+  'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
   'getContactMessage' : IDL.Func([IDL.Nat], [ContactMessage], ['query']),
   'getContactMessages' : IDL.Func([], [IDL.Vec(ContactMessage)], ['query']),
+  'getEnrollments' : IDL.Func([], [IDL.Vec(Enrollment)], ['query']),
+  'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
   'submitContactMessage' : IDL.Func([IDL.Text, IDL.Text, IDL.Text], [], []),
+  'submitEnrollment' : IDL.Func(
+      [
+        IDL.Text,
+        IDL.Text,
+        IDL.Nat,
+        IDL.Text,
+        IDL.Text,
+        IDL.Text,
+        IDL.Text,
+        IDL.Text,
+        IDL.Text,
+        IDL.Bool,
+      ],
+      [],
+      [],
+    ),
 });
 
 export const idlInitArgs = [];
 
 export const idlFactory = ({ IDL }) => {
+  const UserRole = IDL.Variant({
+    'admin' : IDL.Null,
+    'user' : IDL.Null,
+    'guest' : IDL.Null,
+  });
   const ContactMessage = IDL.Record({
     'id' : IDL.Nat,
     'name' : IDL.Text,
     'message' : IDL.Text,
     'phone' : IDL.Text,
   });
+  const Enrollment = IDL.Record({
+    'age' : IDL.Nat,
+    'playstyle' : IDL.Text,
+    'medicalProblem' : IDL.Bool,
+    'name' : IDL.Text,
+    'email' : IDL.Text,
+    'planDuration' : IDL.Text,
+    'address' : IDL.Text,
+    'phone' : IDL.Text,
+    'batchTimeSlot' : IDL.Text,
+    'location' : IDL.Text,
+  });
   
   return IDL.Service({
+    '_initializeAccessControlWithSecret' : IDL.Func([IDL.Text], [], []),
+    'assignCallerUserRole' : IDL.Func([IDL.Principal, UserRole], [], []),
+    'getCallerUserRole' : IDL.Func([], [UserRole], ['query']),
     'getContactMessage' : IDL.Func([IDL.Nat], [ContactMessage], ['query']),
     'getContactMessages' : IDL.Func([], [IDL.Vec(ContactMessage)], ['query']),
+    'getEnrollments' : IDL.Func([], [IDL.Vec(Enrollment)], ['query']),
+    'isCallerAdmin' : IDL.Func([], [IDL.Bool], ['query']),
     'submitContactMessage' : IDL.Func([IDL.Text, IDL.Text, IDL.Text], [], []),
+    'submitEnrollment' : IDL.Func(
+        [
+          IDL.Text,
+          IDL.Text,
+          IDL.Nat,
+          IDL.Text,
+          IDL.Text,
+          IDL.Text,
+          IDL.Text,
+          IDL.Text,
+          IDL.Text,
+          IDL.Bool,
+        ],
+        [],
+        [],
+      ),
   });
 };
 
