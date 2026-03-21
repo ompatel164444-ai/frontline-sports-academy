@@ -1473,7 +1473,7 @@ function Footer() {
             rel="noopener noreferrer"
             className="text-white/20 hover:text-white/40 text-xs transition-colors"
           >
-            Built with ❤️ using caffeine.ai
+            Built with ❤️ With Om and Team
           </a>
         </div>
       </div>
